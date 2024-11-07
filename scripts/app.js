@@ -18,45 +18,42 @@ document.addEventListener('DOMContentLoaded', () => {
         errorDescription.className = 'error-description';
 
         const solutionInput = document.createElement('textarea');
-        solutionInput.placeholder = 'Insira a solução aqui...';
+        solutionInput.placeholder = 'Insira a solução aqui (opcional)...';
         solutionInput.className = 'solution-input';
 
         const saveButton = document.createElement('button');
-        saveButton.textContent = 'Salvar Solução';
+        saveButton.textContent = 'Salvar';
         saveButton.className = 'save-button';
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = '🗑️';
-        deleteButton.className = 'delete-button';
+        const closeButton = document.createElement('span');
+        closeButton.textContent = '×'; // Símbolo de "X"
+        closeButton.className = 'close-button';
 
         const solutionText = document.createElement('p');
         solutionText.className = 'solution-text';
-        solutionText.style.display = 'none'; // Escondido até que a solução seja salva
+        solutionText.style.display = 'none';
 
-        // Evento para salvar a solução
         saveButton.addEventListener('click', () => {
-            if (solutionInput.value.trim() !== '') {
-                solutionText.textContent = `Solução: ${solutionInput.value}`;
-                solutionText.style.display = 'block';
-                solutionInput.style.display = 'none';
-                saveButton.style.display = 'none';
-            } else {
-                alert('Por favor, insira uma solução antes de salvar.');
+            solutionText.textContent = solutionInput.value.trim() ? `Solução: ${solutionInput.value}` : 'Nenhuma solução adicionada';
+            solutionText.style.display = 'block';
+            errorDescription.disabled = true;
+            solutionInput.style.display = 'none';
+            saveButton.style.display = 'none';
+        });
+
+        closeButton.addEventListener('click', () => {
+            const confirmDelete = confirm("Deseja realmente excluir este erro?");
+            if (confirmDelete) {
+                errorList.removeChild(card);
             }
         });
 
-        // Evento para excluir o card
-        deleteButton.addEventListener('click', () => {
-            errorList.removeChild(card);
+        card.addEventListener('click', () => {
+            if (saveButton.style.display === 'none') {
+                solutionInput.style.display = 'block';
+                saveButton.style.display = 'inline-block';
+            }
         });
 
-        // Adicionar elementos ao card
-        card.appendChild(errorDescription);
-        card.appendChild(solutionInput);
-        card.appendChild(saveButton);
-        card.appendChild(solutionText);
-        card.appendChild(deleteButton);
-
-        return card;
-    }
-});
+        card.appendChild(closeButton);
+        card.append

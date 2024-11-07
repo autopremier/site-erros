@@ -1,42 +1,61 @@
 .error-card {
     width: 300px;
-    padding: 15px;
+    padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.error-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    color: darkred;
 }
 
 .error-description,
 .solution-input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
     resize: none;
-}
-
-.save-button,
-.delete-button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-}
-
-.delete-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    color: red;
-    font-size: 1.2em;
-    cursor: pointer;
+    font-family: inherit;
 }
 
 .solution-text {
     margin-top: 10px;
-    color: green;
+    color: #28a745;
     font-weight: bold;
+}
+
+.save-button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #218838;
 }
