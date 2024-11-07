@@ -126,10 +126,10 @@ h1 {
 
 /* Barra de Pesquisa */
 .search-bar {
-    position: relative;
-    width: 80%;
-    max-width: 400px;
-    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 300px;
 }
 
 #search-input {
