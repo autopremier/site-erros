@@ -1,5 +1,57 @@
+/* Corpo e Layout Geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cabeçalho e Título */
+header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Botão Inserir Novo Erro */
+#addError {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addError:hover {
+    background-color: #218838;
+}
+
+/* Lista de Erros */
+#error-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+/* Card de Erro */
 .error-card {
-    width: 300px;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -7,13 +59,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     transition: box-shadow 0.3s;
-    cursor: pointer;
 }
 
 .error-card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Botão de Fechar (X) */
 .close-button {
     position: absolute;
     top: 10px;
@@ -29,6 +81,7 @@
     color: darkred;
 }
 
+/* Campos de Descrição e Solução */
 .error-description,
 .solution-input {
     width: 100%;
@@ -36,8 +89,8 @@
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    resize: none;
     font-family: inherit;
+    resize: none;
 }
 
 .solution-text {
@@ -46,9 +99,11 @@
     font-weight: bold;
 }
 
-.save-button {
+/* Botões de Ação */
+.save-button,
+.edit-button {
     padding: 8px 12px;
-    background-color: #28a745;
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -56,6 +111,11 @@
     transition: background-color 0.3s;
 }
 
-.save-button:hover {
-    background-color: #218838;
+.save-button:hover,
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.edit-button {
+    display: none; /* Inicialmente oculto até que a solução seja salva */
 }

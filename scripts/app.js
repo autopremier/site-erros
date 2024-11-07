@@ -20,10 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const solutionInput = document.createElement('textarea');
         solutionInput.placeholder = 'Insira a solução aqui (opcional)...';
         solutionInput.className = 'solution-input';
+        solutionInput.style.display = 'none'; // Escondido até que o usuário clique para editar
 
         const saveButton = document.createElement('button');
         saveButton.textContent = 'Salvar';
         saveButton.className = 'save-button';
+
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar Solução';
+        editButton.className = 'edit-button';
+        editButton.style.display = 'none'; // Escondido até que a solução seja salva
 
         const closeButton = document.createElement('span');
         closeButton.textContent = '×'; // Símbolo de "X"
@@ -33,14 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
         solutionText.className = 'solution-text';
         solutionText.style.display = 'none';
 
+        // Evento para salvar a solução
         saveButton.addEventListener('click', () => {
             solutionText.textContent = solutionInput.value.trim() ? `Solução: ${solutionInput.value}` : 'Nenhuma solução adicionada';
             solutionText.style.display = 'block';
             errorDescription.disabled = true;
             solutionInput.style.display = 'none';
             saveButton.style.display = 'none';
+            editButton.style.display = 'inline-block';
         });
 
+        // Evento para editar a solução
+        editButton.addEventListener('click', () => {
+            solutionInput.style.display = 'block';
+            saveButton.style.display = 'inline-block';
+            editButton.style.display = 'none';
+        });
+
+        // Evento para excluir o card com confirmação
         closeButton.addEventListener('click', () => {
             const confirmDelete = confirm("Deseja realmente excluir este erro?");
             if (confirmDelete) {
@@ -48,12 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        card.addEventListener('click', () => {
-            if (saveButton.style.display === 'none') {
-                solutionInput.style.display = 'block';
-                saveButton.style.display = 'inline-block';
-            }
-        });
-
+        // Adicionar elementos ao card
         card.appendChild(closeButton);
-        card.append
+        card.appendChild(errorDescription);
+        card.appendChild(solutionInput);
+        card.appendChild(saveButton);
+        card.appendChild(editButton);
+        card.appendChild(solutionText);
+
+        return card;
+    }
+});
