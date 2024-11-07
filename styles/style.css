@@ -126,14 +126,16 @@ h1 {
 
 /* Barra de Pesquisa */
 .search-bar {
-    position: relative;
-    width: 300px;
-    margin-right: 20px; /* Ajuste de posição se necessário */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 250px; /* Ajuste da largura para reduzir o tamanho da barra */
+    z-index: 10;
 }
 
 #search-input {
     width: 100%;
-    padding: 10px 40px 10px 15px; /* Espaço extra à direita para o ícone */
+    padding: 10px 35px 10px 15px; /* Ajuste do padding para a posição do ícone */
     border-radius: 20px;
     border: 1px solid #ddd;
     font-size: 1em;
@@ -147,11 +149,10 @@ h1 {
 
 .search-icon {
     position: absolute;
-    right: 15px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2em;
     color: #999;
     pointer-events: none; /* Evita que o ícone interfira com o clique no campo */
 }
-
