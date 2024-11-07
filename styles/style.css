@@ -128,14 +128,14 @@ h1 {
 .search-bar {
     position: fixed;
     top: 20px;
-    right: 20px;
-    width: 250px; /* Ajuste da largura para reduzir o tamanho da barra */
+    right: 40px; /* Espaço ajustado da margem direita */
+    width: 250px;
     z-index: 10;
 }
 
 #search-input {
     width: 100%;
-    padding: 10px 35px 10px 15px; /* Ajuste do padding para a posição do ícone */
+    padding: 10px 35px 10px 15px;
     border-radius: 20px;
     border: 1px solid #ddd;
     font-size: 1em;
@@ -154,5 +154,6 @@ h1 {
     transform: translateY(-50%);
     font-size: 1.2em;
     color: #999;
-    pointer-events: none; /* Evita que o ícone interfira com o clique no campo */
+    pointer-events: none;
 }
+
