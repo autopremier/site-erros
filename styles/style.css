@@ -25,7 +25,7 @@ h1 {
     font-size: 2em;
     font-weight: bold;
     color: #333;
-    margin-bottom: 15px; /* Adiciona espaço extra abaixo do título */
+    margin-bottom: 15px;
 }
 
 /* Botão Inserir Novo Erro */
@@ -44,14 +44,16 @@ h1 {
     background-color: #218838;
 }
 
-/* Lista de Erros */
+/* Lista de Erros no Lado Esquerdo */
 #error-list {
+    position: fixed;
+    top: 20px;
+    left: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 80%;
-    max-width: 800px;
-    margin-top: 20px;
+    width: 300px;
+    max-width: 80%;
 }
 
 /* Card de Erro */
@@ -121,7 +123,7 @@ h1 {
 }
 
 .edit-button {
-    display: none; /* Inicialmente oculto até que a solução seja salva */
+    display: none;
 }
 
 /* Barra de Pesquisa */
@@ -135,7 +137,7 @@ h1 {
 
 #search-input {
     width: 100%;
-    padding: 10px 35px 10px 15px; /* Padding original para um espaçamento adequado */
+    padding: 10px 35px 10px 15px;
     border-radius: 20px;
     border: 1px solid #ddd;
     font-size: 1em;
@@ -149,13 +151,10 @@ h1 {
 
 .search-icon {
     position: absolute;
-    right: -40px; /* Posiciona a lupa bem no canto direito */
+    right: -40px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2em;
     color: #999;
     pointer-events: none;
 }
-
-
-
