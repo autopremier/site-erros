@@ -135,7 +135,7 @@ h1 {
 
 #search-input {
     width: 100%;
-    padding: 10px 35px 10px 15px; /* Aumenta o padding-right para dar espaço à lupa */
+    padding: 10px 35px 10px 15px; /* Padding original para um espaçamento adequado */
     border-radius: 20px;
     border: 1px solid #ddd;
     font-size: 1em;
@@ -149,7 +149,7 @@ h1 {
 
 .search-icon {
     position: absolute;
-    right: 10px; /* Posiciona a lupa no canto direito */
+    right: 15px; /* Posiciona a lupa bem no canto direito */
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2em;
