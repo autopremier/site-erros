@@ -149,7 +149,7 @@ h1 {
 
 .search-icon {
     position: absolute;
-    right: 30px; /* Posiciona a lupa bem no canto direito */
+    right: -40px; /* Posiciona a lupa bem no canto direito */
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2em;
