@@ -128,14 +128,14 @@ h1 {
 .search-bar {
     position: fixed;
     top: 20px;
-    right: 60px; /* Aumenta o espaço da margem direita */
-    width: 200px; /* Reduz a largura da barra de pesquisa */
+    right: 60px;
+    width: 200px;
     z-index: 10;
 }
 
 #search-input {
     width: 100%;
-    padding: 10px 30px 10px 15px; /* Ajusta o padding para a posição da lupa */
+    padding: 10px 35px 10px 15px; /* Aumenta o padding-right para dar espaço à lupa */
     border-radius: 20px;
     border: 1px solid #ddd;
     font-size: 1em;
@@ -149,12 +149,13 @@ h1 {
 
 .search-icon {
     position: absolute;
-    right: 15px; /* Posiciona a lupa no canto direito do campo */
+    right: 10px; /* Posiciona a lupa no canto direito */
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2em;
     color: #999;
     pointer-events: none;
 }
+
 
 
