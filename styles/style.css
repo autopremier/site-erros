@@ -126,10 +126,11 @@ h1 {
 
 /* Barra de Pesquisa */
 .search-bar {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
     width: 300px;
+    z-index: 10;
 }
 
 #search-input {
