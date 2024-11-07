@@ -123,3 +123,34 @@ h1 {
 .edit-button {
     display: none; /* Inicialmente oculto até que a solução seja salva */
 }
+
+/* Barra de Pesquisa */
+.search-bar {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #007bff;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #999;
+}
