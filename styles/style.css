@@ -11,7 +11,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh; /* Garante altura mínima para ocupar toda a tela */
 }
 
 /* Cabeçalho e Título */
@@ -52,13 +52,13 @@ h1 {
     justify-content: start;
     width: 60%;
     max-width: 800px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     overflow-y: auto;
-    max-height: 70vh;
+    height: 100%; /* Ocupa a altura total da tela */
 }
 
 /* Lista de Erros */
@@ -128,4 +128,37 @@ h1 {
     border: 1px solid #ddd;
     font-family: inherit;
     resize: none;
+}
+
+/* Barra de Pesquisa */
+.search-bar {
+    position: fixed;
+    top: 20px;
+    right: 60px;
+    width: 200px;
+    z-index: 10;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #007bff;
+}
+
+.search-icon {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #999;
+    pointer-events: none;
 }
