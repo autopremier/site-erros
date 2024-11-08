@@ -64,10 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Evento para editar o card
         editButton.addEventListener('click', () => {
-            // Cria um campo de texto para editar o erro
+            // Cria legendas e campos de texto para editar o erro e solução
+            const errorLabel = document.createElement('label');
+            errorLabel.textContent = 'Erro:';
+            errorLabel.className = 'label';
+
             const editDescription = document.createElement('textarea');
             editDescription.className = 'error-description';
             editDescription.value = errorText.textContent;
+
+            const solutionLabel = document.createElement('label');
+            solutionLabel.textContent = 'Solução:';
+            solutionLabel.className = 'label';
 
             const editSolution = document.createElement('textarea');
             editSolution.className = 'solution-input';
@@ -92,21 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Remove os campos de edição e restaura o botão de edição
-                card.replaceChild(errorText, editDescription);
-                if (card.contains(editSolution)) {
-                    card.replaceChild(solutionText, editSolution);
-                }
-                card.replaceChild(editButton, saveEditButton);
+                card.innerHTML = '';
+                card.appendChild(closeButton);
+                card.appendChild(errorText);
+                if (solutionText.textContent) card.appendChild(solutionText);
+                card.appendChild(editButton);
             });
 
-            // Substitui o conteúdo do card pelo campo de edição
-            card.replaceChild(editDescription, errorText);
-            if (solution) {
-                card.replaceChild(editSolution, solutionText);
-            } else {
-                card.appendChild(editSolution);
-            }
-            card.replaceChild(saveEditButton, editButton);
+            // Substitui o conteúdo do card pelo campo de edição com legendas
+            card.innerHTML = '';
+            card.appendChild(closeButton);
+            card.appendChild(errorLabel);
+            card.appendChild(editDescription);
+            card.appendChild(solutionLabel);
+            card.appendChild(editSolution);
+            card.appendChild(saveEditButton);
         });
 
         card.appendChild(errorText);

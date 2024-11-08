@@ -88,7 +88,7 @@ h1 {
 /* Botão de Fechar (X) */
 .close-button {
     position: absolute;
-    top: 10px;
+    top: -10px;
     right: 10px;
     color: red;
     font-size: 18px;
@@ -148,38 +148,56 @@ h1 {
     margin-top: 10px;
 }
 
-
-/* Barra de Pesquisa */
-.search-bar {
-    position: fixed;
-    top: 20px;
-    right: 40px; /* Altere para 40px para ficar mais para dentro da tela */
-    width: 200px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
+/* Legendas para as caixas de edição */
+.label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
-#search-input {
-    width: 100%;
-    padding: 10px 35px 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
+/* Botão Sim e Não */
+#addSolution, #skipSolution {
+    padding: 10px 20px;
     font-size: 1em;
-    outline: none;
-    transition: border-color 0.3s;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s;
+    margin-right: 10px;
 }
 
-#search-input:focus {
-    border-color: #007bff;
+/* Botão Sim - Verde */
+#addSolution {
+    background-color: #28a745;
 }
 
-.search-icon {
-    position: absolute;
-    right: 15px; /* Ajusta a posição da lupa dentro da caixa */
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2em;
-    color: #999;
-    pointer-events: none;
+#addSolution:hover {
+    background-color: #218838;
+}
+
+/* Botão Não - Vermelho */
+#skipSolution {
+    background-color: #dc3545;
+}
+
+#skipSolution:hover {
+    background-color: #c82333;
+}
+
+/* Botão Salvar */
+#saveError {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #f8f9fa;
+    margin-top: 15px;
+}
+
+#saveError:hover {
+    background-color: #e2e6ea;
+    color: #007bff;
 }
