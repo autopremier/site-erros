@@ -201,3 +201,36 @@ h1 {
     background-color: #e2e6ea;
     color: #007bff;
 }
+
+/* Barra de Pesquisa */
+.search-bar {
+    position: fixed;
+    top: 20px;
+    right: -40px; /* Ajuste para posicionar à direita */
+    width: 200px;
+    z-index: 10;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 35px 10px 15px; /* Espaçamento interno para o ícone */
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #007bff;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px; /* Posição ajustada do ícone dentro da caixa de pesquisa */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #999;
+    pointer-events: none;
+}
