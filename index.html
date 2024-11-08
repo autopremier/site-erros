@@ -10,16 +10,33 @@
     <header>
         <h1>Anotações de Erros do Sistema</h1>
         <button id="addError">Inserir Novo Erro</button>
+
+        <!-- Caixa de Pesquisa -->
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Buscar erros">
+            <span class="search-icon">🔍</span>
+        </div>
     </header>
-    
-    <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Buscar erros">
-        <span class="search-icon">🔍</span>
-    </div>    
 
     <!-- Contêiner Central para os Cards de Erro -->
     <div class="error-container">
         <div id="error-list"></div>
+    </div>
+
+    <!-- Modal para Inserção do Erro -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">×</span>
+            <h2>Adicionar Novo Erro</h2>
+            <textarea id="errorDescription" placeholder="Descreva o erro aqui..."></textarea>
+            <div id="solutionPrompt" style="display: none;">
+                <p>Deseja adicionar uma solução?</p>
+                <button id="addSolution">Sim</button>
+                <button id="skipSolution">Não</button>
+            </div>
+            <textarea id="solutionDescription" placeholder="Descreva a solução aqui..." style="display: none;"></textarea>
+            <button id="saveError">Salvar</button>
+        </div>
     </div>
 
     <script src="scripts/app.js"></script>

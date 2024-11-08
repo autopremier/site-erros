@@ -11,7 +11,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh; /* Garante altura mínima para ocupar toda a tela */
+    min-height: 100vh;
 }
 
 /* Cabeçalho e Título */
@@ -58,7 +58,7 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     overflow-y: auto;
-    height: 100%; /* Ocupa a altura total da tela */
+    height: 100%;
 }
 
 /* Lista de Erros */
@@ -119,46 +119,31 @@ h1 {
     background-color: #0056b3;
 }
 
-/* Campos de Descrição e Solução */
-.error-description {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-family: inherit;
-    resize: none;
-}
-
-/* Barra de Pesquisa */
-.search-bar {
+/* Modal */
+.modal {
+    display: none;
     position: fixed;
-    top: 20px;
-    right: 60px;
-    width: 200px;
-    z-index: 10;
-}
-
-#search-input {
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 10px 35px 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    font-size: 1em;
-    outline: none;
-    transition: border-color 0.3s;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
-#search-input:focus {
-    border-color: #007bff;
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
-.search-icon {
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2em;
-    color: #999;
-    pointer-events: none;
+/* Botões no Modal */
+#saveError,
+#addSolution,
+#skipSolution {
+    margin-top: 10px;
 }

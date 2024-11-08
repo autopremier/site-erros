@@ -1,66 +1,67 @@
 document.addEventListener('DOMContentLoaded', () => {
     const errorList = document.getElementById('error-list');
     const addErrorButton = document.getElementById('addError');
+    const errorModal = document.getElementById('errorModal');
+    const closeModalButton = document.getElementById('closeModal');
+    const saveErrorButton = document.getElementById('saveError');
+    const errorDescription = document.getElementById('errorDescription');
+    const solutionPrompt = document.getElementById('solutionPrompt');
+    const addSolutionButton = document.getElementById('addSolution');
+    const skipSolutionButton = document.getElementById('skipSolution');
+    const solutionDescription = document.getElementById('solutionDescription');
 
-    // Evento para adicionar novo campo de edição para um erro
+    // Exibe o modal para adicionar novo erro
     addErrorButton.addEventListener('click', () => {
-        const errorCard = createErrorCard();
-        errorList.appendChild(errorCard);
+        errorModal.style.display = 'flex';
+        errorDescription.value = '';
+        solutionDescription.value = '';
+        solutionPrompt.style.display = 'block';
+        solutionDescription.style.display = 'none';
     });
 
-    // Função para criar um novo card de erro
-    function createErrorCard() {
+    // Fecha o modal
+    closeModalButton.addEventListener('click', () => {
+        errorModal.style.display = 'none';
+    });
+
+    // Escolha para adicionar solução
+    addSolutionButton.addEventListener('click', () => {
+        solutionPrompt.style.display = 'none';
+        solutionDescription.style.display = 'block';
+    });
+
+    skipSolutionButton.addEventListener('click', () => {
+        solutionPrompt.style.display = 'none';
+    });
+
+    // Salva o erro e adiciona à lista
+    saveErrorButton.addEventListener('click', () => {
         const card = document.createElement('div');
         card.className = 'error-card';
 
-        const errorDescription = document.createElement('textarea');
-        errorDescription.placeholder = 'Descreva o erro aqui...';
-        errorDescription.className = 'error-description';
+        const errorText = document.createElement('p');
+        errorText.textContent = errorDescription.value;
 
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Salvar';
-        saveButton.className = 'save-button';
+        const solutionText = document.createElement('p');
+        if (solutionDescription.value) {
+            solutionText.textContent = `Solução: ${solutionDescription.value}`;
+        }
+
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar';
+        editButton.className = 'edit-button';
 
         const closeButton = document.createElement('span');
         closeButton.textContent = '×';
         closeButton.className = 'close-button';
-
-        // Evento para salvar o card e adicionar à lista
-        saveButton.addEventListener('click', () => {
-            const savedCard = document.createElement('div');
-            savedCard.className = 'error-card';
-            
-            const savedText = document.createElement('p');
-            savedText.textContent = errorDescription.value || 'Erro sem descrição';
-
-            const editButton = document.createElement('button');
-            editButton.textContent = 'Editar';
-            editButton.className = 'edit-button';
-
-            const savedCloseButton = closeButton.cloneNode(true);
-            savedCloseButton.addEventListener('click', () => savedCard.remove());
-
-            // Evento para editar o card
-            editButton.addEventListener('click', () => {
-                errorDescription.value = savedText.textContent;
-                savedCard.replaceWith(card);
-            });
-
-            savedCard.appendChild(savedText);
-            savedCard.appendChild(editButton);
-            savedCard.appendChild(savedCloseButton);
-            errorList.appendChild(savedCard);
-
-            // Limpa a área de edição
-            errorDescription.value = '';
-        });
-
         closeButton.addEventListener('click', () => card.remove());
 
+        card.appendChild(errorText);
+        if (solutionDescription.value) card.appendChild(solutionText);
+        card.appendChild(editButton);
         card.appendChild(closeButton);
-        card.appendChild(errorDescription);
-        card.appendChild(saveButton);
 
-        return card;
-    }
+        errorList.appendChild(card);
+        errorModal.style.display = 'none';
+    });
 });
