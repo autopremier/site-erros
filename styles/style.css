@@ -44,27 +44,41 @@ h1 {
     background-color: #218838;
 }
 
-/* Lista de Erros no Lado Esquerdo */
+/* Contêiner Central dos Erros */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 60%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+/* Lista de Erros */
 #error-list {
-    position: fixed;
-    top: 20px;
-    left: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 300px;
-    max-width: 80%;
+    width: 100%;
 }
 
 /* Card de Erro */
 .error-card {
-    padding: 20px;
+    padding: 15px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    transition: box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .error-card:hover {
@@ -87,9 +101,26 @@ h1 {
     color: darkred;
 }
 
+/* Botão de Editar */
+.edit-button {
+    align-self: flex-end;
+    padding: 5px 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
 /* Campos de Descrição e Solução */
-.error-description,
-.solution-input {
+.error-description {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -97,64 +128,4 @@ h1 {
     border: 1px solid #ddd;
     font-family: inherit;
     resize: none;
-}
-
-.solution-text {
-    margin-top: 10px;
-    color: #28a745;
-    font-weight: bold;
-}
-
-/* Botões de Ação */
-.save-button,
-.edit-button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.save-button:hover,
-.edit-button:hover {
-    background-color: #0056b3;
-}
-
-.edit-button {
-    display: none;
-}
-
-/* Barra de Pesquisa */
-.search-bar {
-    position: fixed;
-    top: 20px;
-    right: 60px;
-    width: 200px;
-    z-index: 10;
-}
-
-#search-input {
-    width: 100%;
-    padding: 10px 35px 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    font-size: 1em;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-#search-input:focus {
-    border-color: #007bff;
-}
-
-.search-icon {
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2em;
-    color: #999;
-    pointer-events: none;
 }

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorList = document.getElementById('error-list');
     const addErrorButton = document.getElementById('addError');
 
-    // Evento para adicionar novo erro
+    // Evento para adicionar novo campo de edição para um erro
     addErrorButton.addEventListener('click', () => {
         const errorCard = createErrorCard();
         errorList.appendChild(errorCard);
@@ -29,11 +29,25 @@ document.addEventListener('DOMContentLoaded', () => {
         saveButton.addEventListener('click', () => {
             const savedCard = document.createElement('div');
             savedCard.className = 'error-card';
-            savedCard.textContent = errorDescription.value || 'Erro sem descrição';
             
+            const savedText = document.createElement('p');
+            savedText.textContent = errorDescription.value || 'Erro sem descrição';
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Editar';
+            editButton.className = 'edit-button';
+
             const savedCloseButton = closeButton.cloneNode(true);
             savedCloseButton.addEventListener('click', () => savedCard.remove());
 
+            // Evento para editar o card
+            editButton.addEventListener('click', () => {
+                errorDescription.value = savedText.textContent;
+                savedCard.replaceWith(card);
+            });
+
+            savedCard.appendChild(savedText);
+            savedCard.appendChild(editButton);
             savedCard.appendChild(savedCloseButton);
             errorList.appendChild(savedCard);
 
