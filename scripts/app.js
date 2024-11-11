@@ -12,13 +12,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const skipSolutionButton = document.getElementById('skipSolution');
     const solutionDescription = document.getElementById('solutionDescription');
 
+    // Carrega os dados dos cards do Local Storage
+    function loadErrorsFromStorage() {
+        const savedErrors = JSON.parse(localStorage.getItem('errors')) || [];
+        savedErrors.forEach(({ description, solution }) => {
+            addErrorCard(description, solution);
+        });
+    }
+
+    // Salva os dados dos cards no Local Storage
+    function saveErrorsToStorage() {
+        const errors = [];
+        errorList.querySelectorAll('.error-card').forEach(card => {
+            const description = card.querySelector('.error-description').textContent;
+            const solutionElement = card.querySelector('.solution-description');
+            const solution = solutionElement ? solutionElement.textContent.replace('Solução: ', '') : '';
+            errors.push({ description, solution });
+        });
+        localStorage.setItem('errors', JSON.stringify(errors));
+    }
+
     // Função de pesquisa
     function searchErrors() {
-        const query = searchInput.value.toLowerCase().trim(); // Obtenha o texto da pesquisa
+        const query = searchInput.value.toLowerCase().trim();
         const cards = errorList.querySelectorAll('.error-card');
 
         cards.forEach(card => {
-            const errorText = card.querySelector('p').textContent.toLowerCase();
+            const errorText = card.querySelector('.error-description').textContent.toLowerCase();
             if (errorText.includes(query)) {
                 card.style.display = 'block';
             } else {
@@ -64,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Salva o erro e adiciona à lista
     saveErrorButton.addEventListener('click', () => {
         addErrorCard(errorDescription.value, solutionDescription.value);
+        saveErrorsToStorage(); // Salva os dados no Local Storage após adicionar o card
         errorModal.style.display = 'none';
     });
 
@@ -73,10 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = 'error-card';
 
         const errorText = document.createElement('p');
+        errorText.className = 'error-description';
         errorText.textContent = description;
 
         const solutionText = document.createElement('p');
         if (solution) {
+            solutionText.className = 'solution-description';
             solutionText.textContent = `Solução: ${solution}`;
         }
 
@@ -87,22 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeButton = document.createElement('span');
         closeButton.textContent = '×';
         closeButton.className = 'close-button';
-        closeButton.addEventListener('click', () => card.remove());
+        closeButton.addEventListener('click', () => {
+            card.remove();
+            saveErrorsToStorage(); // Salva os dados no Local Storage após remover o card
+        });
 
         // Evento para editar o card
         editButton.addEventListener('click', () => {
-            // Cria legendas e campos de texto para editar o erro e solução
-            const errorLabel = document.createElement('label');
-            errorLabel.textContent = 'Erro:';
-            errorLabel.className = 'label';
-
             const editDescription = document.createElement('textarea');
             editDescription.className = 'error-description';
             editDescription.value = errorText.textContent;
-
-            const solutionLabel = document.createElement('label');
-            solutionLabel.textContent = 'Solução:';
-            solutionLabel.className = 'label';
 
             const editSolution = document.createElement('textarea');
             editSolution.className = 'solution-input';
@@ -121,25 +138,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         card.insertBefore(solutionText, editButton);
                     }
                 } else {
-                    if (card.contains(solutionText)) {
-                        solutionText.remove();
-                    }
+                    solutionText.remove();
                 }
-
-                // Remove os campos de edição e restaura o botão de edição
                 card.innerHTML = '';
                 card.appendChild(closeButton);
                 card.appendChild(errorText);
                 if (solutionText.textContent) card.appendChild(solutionText);
                 card.appendChild(editButton);
+                saveErrorsToStorage(); // Salva os dados no Local Storage após editar o card
             });
 
-            // Substitui o conteúdo do card pelo campo de edição com legendas
             card.innerHTML = '';
             card.appendChild(closeButton);
-            card.appendChild(errorLabel);
             card.appendChild(editDescription);
-            card.appendChild(solutionLabel);
             card.appendChild(editSolution);
             card.appendChild(saveEditButton);
         });
@@ -151,4 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         errorList.appendChild(card);
     }
+
+    // Carrega os dados dos cards quando a página é carregada
+    loadErrorsFromStorage();
 });
