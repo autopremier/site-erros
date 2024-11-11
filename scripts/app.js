@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
     const errorList = document.getElementById('error-list');
     const addErrorButton = document.getElementById('addError');
     const errorModal = document.getElementById('errorModal');
@@ -9,6 +11,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const addSolutionButton = document.getElementById('addSolution');
     const skipSolutionButton = document.getElementById('skipSolution');
     const solutionDescription = document.getElementById('solutionDescription');
+
+    // Função de pesquisa
+    function searchErrors() {
+        const query = searchInput.value.toLowerCase();
+        const cards = errorList.querySelectorAll('.error-card');
+
+        cards.forEach(card => {
+            const errorText = card.querySelector('p').textContent.toLowerCase();
+            if (errorText.includes(query)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Adiciona o evento de clique no ícone de pesquisa
+    searchButton.addEventListener('click', searchErrors);
+
+    // Adiciona o evento de "Enter" no campo de pesquisa
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            searchErrors();
+        }
+    });
 
     // Exibe o modal para adicionar novo erro
     addErrorButton.addEventListener('click', () => {
