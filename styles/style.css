@@ -206,30 +206,34 @@ h1 {
 .search-bar {
     position: fixed;
     top: 20px;
-    right: -40px; /* Ajuste para posicionar à direita */
-    width: 200px;
+    right: 20px; /* Ajuste para alinhar à direita da tela */
+    width: 220px; /* Ajuste o tamanho da barra conforme necessário */
     z-index: 10;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 5px 15px;
 }
 
 #search-input {
     width: 100%;
-    padding: 10px 35px 10px 15px; /* Espaçamento interno para o ícone */
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    font-size: 1em;
+    border: none;
     outline: none;
-    transition: border-color 0.3s;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 8px 35px 8px 10px; /* Ajuste para o padding interno */
 }
 
 #search-input:focus {
-    border-color: #007bff;
+    border: none; /* Remova a borda no foco */
+    outline: none;
 }
 
 .search-icon {
     position: absolute;
-    right: 10px; /* Posição ajustada do ícone dentro da caixa de pesquisa */
-    top: 50%;
-    transform: translateY(-50%);
+    right: 30px; /* Ajuste para posicionar o ícone dentro da barra */
     font-size: 1.2em;
     color: #999;
     pointer-events: none;
