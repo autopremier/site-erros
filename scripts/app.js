@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função de pesquisa
     function searchErrors() {
-        const query = searchInput.value.toLowerCase();
+        const query = searchInput.value.toLowerCase().trim(); // Obtenha o texto da pesquisa
         const cards = errorList.querySelectorAll('.error-card');
 
         cards.forEach(card => {
