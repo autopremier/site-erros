@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Evento para editar o card
         editButton.addEventListener('click', () => {
+            // Alterna para o modo de edição
             const editDescription = document.createElement('textarea');
             editDescription.className = 'error-description';
             editDescription.value = errorText.textContent;
@@ -138,7 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         card.insertBefore(solutionText, editButton);
                     }
                 } else {
-                    solutionText.remove();
+                    if (card.contains(solutionText)) {
+                        solutionText.remove();
+                    }
                 }
                 card.innerHTML = '';
                 card.appendChild(closeButton);
