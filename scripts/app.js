@@ -148,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 saveErrorsToStorage(); // Salva os dados no Local Storage após editar o card
             });
 
+            // Limpa o card atual e insere os elementos de edição
             card.innerHTML = '';
             card.appendChild(closeButton);
             card.appendChild(editDescription);
@@ -155,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.appendChild(saveEditButton);
         });
 
+        // Adiciona os elementos principais ao card
         card.appendChild(errorText);
         if (solution) card.appendChild(solutionText);
         card.appendChild(editButton);
